@@ -68,14 +68,13 @@
                 Contenido Dinámico PHP
             </h2>
             <div class="grid gap-4">
-                <?php
-                // Generar tres párrafos con PHP
-                for ($i = 1; $i <= 3; $i++) {
+                <?php // Generar tres párrafos con PHP
+// Generar tres párrafos con PHP
+for ($i = 1; $i <= 3; $i++) {
                     echo "<div class='bg-dark-bg p-6 rounded-lg border-l-4 border-orange-primary'>";
                     echo "<p class='text-gray-text text-lg'>Este es el párrafo número <span class='text-orange-secondary font-semibold'>$i</span> generado dinámicamente con PHP.</p>";
-                    echo "</div>";
-                }
-                ?>
+                    echo '</div>';
+                } ?>
             </div>
         </div>
 
