@@ -7,19 +7,19 @@
     <title>Actividad 1 - Variables y Tipos de Datos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'dark-bg': '#1a1a1a',
-                        'dark-surface': '#2a2a2a',
-                        'orange-primary': '#ff6b35',
-                        'orange-secondary': '#ff8c42',
-                        'gray-text': '#a0a0a0'
-                    }
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'dark-bg': '#1a1a1a',
+                    'dark-surface': '#2a2a2a',
+                    'orange-primary': '#ff6b35',
+                    'orange-secondary': '#ff8c42',
+                    'gray-text': '#a0a0a0'
                 }
             }
         }
+    }
     </script>
 </head>
 
@@ -148,19 +148,18 @@
                 <div class="bg-gray-900 p-4 rounded-lg text-sm overflow-x-auto">
                     <pre class="text-gray-300">
 
-                    <span class="text-purple-400">&lt;?php</span>
-                    <span class="text-gray-500">// Variables de ejemplo</span>
-
-                    <span class="text-red-400">$nombre</span> = <span class="text-green-400">"María García"</span>;
-                    <span class="text-red-400">$edad</span> = <span class="text-yellow-400">28</span>;
-                    <span class="text-red-400">$salario</span> = <span class="text-yellow-400">45000.50</span>;
-                    <span class="text-red-400">$esActivo</span> = <span class="text-blue-400">true</span>;
-                    <span class="text-gray-500">// Mostrar información</span>
-                    <span class="text-blue-400">echo</span> <span class="text-green-400">"Nombre: $nombre"</span>;
-                    <span class="text-blue-400">echo</span> <span class="text-green-400">"Edad: $edad años"</span>;
-                    <span class="text-gray-500">// Operaciones</span>
-                    <span class="text-red-400">$salarioMensual</span> = <span class="text-red-400">$salario</span> / <span class="text-yellow-400">12</span>;
-                    <span class="text-purple-400">?&gt;</span>
+<span class="text-purple-400">&lt;?php</span>
+<span class="text-gray-500">// Variables de ejemplo</span>
+<span class="text-red-400">$nombre</span> = <span class="text-green-400">"María García"</span>;
+<span class="text-red-400">$edad</span> = <span class="text-yellow-400">28</span>;
+<span class="text-red-400">$salario</span> = <span class="text-yellow-400">45000.50</span>;
+<span class="text-red-400">$esActivo</span> = <span class="text-blue-400">true</span>;
+<span class="text-gray-500">// Mostrar información</span>
+<span class="text-blue-400">echo</span> <span class="text-green-400">"Nombre: $nombre"</span>;
+<span class="text-blue-400">echo</span> <span class="text-green-400">"Edad: $edad años"</span>;
+<span class="text-gray-500">// Operaciones</span>
+<span class="text-red-400">$salarioMensual</span> = <span class="text-red-400">$salario</span> / <span class="text-yellow-400">12</span>;
+<span class="text-purple-400">?&gt;</span>
                     </pre>
                 </div>
             </div>

@@ -84,11 +84,11 @@
 
                     <div class="bg-dark-bg p-4 rounded-lg mb-4">
                         <pre class="text-sm">
-                            <span class="text-blue-400">&lt;form</span> <span class="text-yellow-400">method</span>=<span class="text-green-400">"POST"</span> <span class="text-yellow-400">action</span>=<span class="text-green-400">"procesar.php"</span><span class="text-blue-400">&gt;</span>
-                            <span class="text-blue-400">&lt;input</span> <span class="text-yellow-400">type</span>=<span class="text-green-400">"text"</span> <span class="text-yellow-400">name</span>=<span class="text-green-400">"nombre"</span><span class="text-blue-400">&gt;</span>
-                            <span class="text-blue-400">&lt;input</span> <span class="text-yellow-400">type</span>=<span class="text-green-400">"email"</span> <span class="text-yellow-400">name</span>=<span class="text-green-400">"email"</span><span class="text-blue-400">&gt;</span>
-                            <span class="text-blue-400">&lt;button</span> <span class="text-yellow-400">type</span>=<span class="text-green-400">"submit"</span><span class="text-blue-400">&gt;</span>Enviar<span class="text-blue-400">&lt;/button&gt;</span>
-                            <span class="text-blue-400">&lt;/form&gt;</span>
+<span class="text-blue-400">&lt;form</span> <span class="text-yellow-400">method</span>=<span class="text-green-400">"POST"</span> <span class="text-yellow-400">action</span>=<span class="text-green-400">"procesar.php"</span><span class="text-blue-400">&gt;</span>
+<span class="text-blue-400">&lt;input</span> <span class="text-yellow-400">type</span>=<span class="text-green-400">"text"</span> <span class="text-yellow-400">name</span>=<span class="text-green-400">"nombre"</span><span class="text-blue-400">&gt;</span>
+<span class="text-blue-400">&lt;input</span> <span class="text-yellow-400">type</span>=<span class="text-green-400">"email"</span> <span class="text-yellow-400">name</span>=<span class="text-green-400">"email"</span><span class="text-blue-400">&gt;</span>
+<span class="text-blue-400">&lt;button</span> <span class="text-yellow-400">type</span>=<span class="text-green-400">"submit"</span><span class="text-blue-400">&gt;</span>Enviar<span class="text-blue-400">&lt;/button&gt;</span>
+<span class="text-blue-400">&lt;/form&gt;</span>
                         </pre>
                     </div>
 
@@ -210,10 +210,9 @@
                     <h3 class="text-xl font-semibold text-white mb-4">Formulario de Registro</h3>
 
                     <?php if (!empty($mensaje)): ?>
-                    <div
-                        class="p-4 rounded-lg mb-4 <?php echo $tipoMensaje == 'success'
-                            ? 'bg-green-900 text-green-200'
-                            : 'bg-red-900 text-red-200'; ?>">
+                    <div class="p-4 rounded-lg mb-4 <?php echo $tipoMensaje == 'success'
+                        ? 'bg-green-900 text-green-200'
+                        : 'bg-red-900 text-red-200'; ?>">
                         <?php echo $mensaje; ?>
                     </div>
                     <?php endif; ?>
@@ -253,25 +252,25 @@
                                 class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:border-orange-primary focus:outline-none"
                                 required>
                                 <option value="">Selecciona una ciudad</option>
-                                <option value="madrid"
-                                    <?php echo ($_POST['ciudad'] ?? '') == 'madrid'
-                                        ? 'selected'
-                                        : ''; ?>>
+                                <option value="madrid" <?php echo ($_POST['ciudad'] ?? '') ==
+                                'madrid'
+                                    ? 'selected'
+                                    : ''; ?>>
                                     Madrid</option>
-                                <option value="barcelona"
-                                    <?php echo ($_POST['ciudad'] ?? '') == 'barcelona'
-                                        ? 'selected'
-                                        : ''; ?>>
+                                <option value="barcelona" <?php echo ($_POST['ciudad'] ?? '') ==
+                                'barcelona'
+                                    ? 'selected'
+                                    : ''; ?>>
                                     Barcelona</option>
-                                <option value="valencia"
-                                    <?php echo ($_POST['ciudad'] ?? '') == 'valencia'
-                                        ? 'selected'
-                                        : ''; ?>>
+                                <option value="valencia" <?php echo ($_POST['ciudad'] ?? '') ==
+                                'valencia'
+                                    ? 'selected'
+                                    : ''; ?>>
                                     Valencia</option>
-                                <option value="sevilla"
-                                    <?php echo ($_POST['ciudad'] ?? '') == 'sevilla'
-                                        ? 'selected'
-                                        : ''; ?>>
+                                <option value="sevilla" <?php echo ($_POST['ciudad'] ?? '') ==
+                                'sevilla'
+                                    ? 'selected'
+                                    : ''; ?>>
                                     Sevilla</option>
                             </select>
                         </div>
@@ -293,10 +292,12 @@
                                 <?php foreach ($opcionesIntereses as $valor => $etiqueta): ?>
                                 <label class="flex items-center">
                                     <input type="checkbox" name="intereses[]"
-                                        value="<?php echo $valor; ?>"
-                                        <?php echo in_array($valor, $interesesSeleccionados)
-                                            ? 'checked'
-                                            : ''; ?>
+                                        value="<?php echo $valor; ?>" <?php echo in_array(
+    $valor,
+    $interesesSeleccionados,
+)
+    ? 'checked'
+    : ''; ?>
                                         class="mr-2 text-orange-primary focus:ring-orange-primary">
                                     <span class="text-gray-text"><?php echo $etiqueta; ?></span>
                                 </label>
@@ -332,42 +333,37 @@
                         <div class="space-y-3 text-sm">
                             <div>
                                 <span class="text-gray-text">Nombre:</span>
-                                <span
-                                    class="text-white ml-2"><?php echo $datosRecibidos[
-                                        'nombre'
-                                    ]; ?></span>
+                                <span class="text-white ml-2"><?php echo $datosRecibidos[
+                                    'nombre'
+                                ]; ?></span>
                             </div>
                             <div>
                                 <span class="text-gray-text">Email:</span>
-                                <span
-                                    class="text-white ml-2"><?php echo $datosRecibidos[
-                                        'email'
-                                    ]; ?></span>
+                                <span class="text-white ml-2"><?php echo $datosRecibidos[
+                                    'email'
+                                ]; ?></span>
                             </div>
                             <?php if (!empty($datosRecibidos['telefono'])): ?>
                             <div>
                                 <span class="text-gray-text">Teléfono:</span>
-                                <span
-                                    class="text-white ml-2"><?php echo $datosRecibidos[
-                                        'telefono'
-                                    ]; ?></span>
+                                <span class="text-white ml-2"><?php echo $datosRecibidos[
+                                    'telefono'
+                                ]; ?></span>
                             </div>
                             <?php endif; ?>
                             <div>
                                 <span class="text-gray-text">Ciudad:</span>
-                                <span
-                                    class="text-white ml-2"><?php echo ucfirst(
-                                        $datosRecibidos['ciudad'],
-                                    ); ?></span>
+                                <span class="text-white ml-2"><?php echo ucfirst(
+                                    $datosRecibidos['ciudad'],
+                                ); ?></span>
                             </div>
                             <?php if (!empty($datosRecibidos['intereses'])): ?>
                             <div>
                                 <span class="text-gray-text">Intereses:</span>
-                                <span
-                                    class="text-white ml-2"><?php echo implode(
-                                        ', ',
-                                        $datosRecibidos['intereses'],
-                                    ); ?></span>
+                                <span class="text-white ml-2"><?php echo implode(
+                                    ', ',
+                                    $datosRecibidos['intereses'],
+                                ); ?></span>
                             </div>
                             <?php endif; ?>
                             <?php if (!empty($datosRecibidos['comentarios'])): ?>
@@ -379,10 +375,9 @@
                             <?php endif; ?>
                             <div>
                                 <span class="text-gray-text">Fecha de registro:</span>
-                                <span
-                                    class="text-white ml-2"><?php echo $datosRecibidos[
-                                        'fecha'
-                                    ]; ?></span>
+                                <span class="text-white ml-2"><?php echo $datosRecibidos[
+                                    'fecha'
+                                ]; ?></span>
                             </div>
                         </div>
                     </div>
