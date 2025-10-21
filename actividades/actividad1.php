@@ -1,53 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividad 1 - Variables y Tipos de Datos</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    'dark-bg': '#1a1a1a',
-                    'dark-surface': '#2a2a2a',
-                    'orange-primary': '#ff6b35',
-                    'orange-secondary': '#ff8c42',
-                    'gray-text': '#a0a0a0'
-                }
-            }
-        }
-    }
-    </script>
-</head>
-
-<body class="bg-dark-bg text-white min-h-screen">
-    <!-- Header -->
-    <header class="bg-dark-surface shadow-lg border-b-2 border-orange-primary">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <h1 class="text-3xl font-bold text-orange-primary">Actividad PHP</h1>
-                <nav>
-                    <ul class="flex space-x-8">
-                        <li><a href="../index.php"
-                                class="text-white hover:text-orange-primary transition-colors duration-300 font-medium">Inicio</a>
-                        </li>
-                        <li><a href="index.php"
-                                class="text-orange-secondary hover:text-orange-primary transition-colors duration-300 font-medium">Actividades</a>
-                        </li>
-                        <li><a href="../pages/about.php"
-                                class="text-white hover:text-orange-primary transition-colors duration-300 font-medium">Acerca
-                                de</a></li>
-                        <li><a href="../pages/contact.php"
-                                class="text-white hover:text-orange-primary transition-colors duration-300 font-medium">Contacto</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+<?php
+$pageTitle = 'Actividad 1 - Variables y Tipos de Datos';
+$basePath = '../';
+include '../components/header.php';
+?>
 
     <!-- Main Content -->
     <main class="container mx-auto px-6 py-12">
@@ -187,19 +142,31 @@
                 </div>
             </div>
         </div>
+
+        <!-- Navegación -->
+        <div class="flex justify-between items-center mt-12">
+            <a href="index.php"
+                class="inline-flex items-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-500 transition-colors">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z"
+                        clip-rule="evenodd" />
+                </svg>
+                Volver al Índice
+            </a>
+
+            <span class="text-orange-primary font-semibold">Actividad 1 de 6</span>
+
+            <a href="actividad2.php"
+                class="inline-flex items-center px-6 py-3 bg-orange-primary text-white rounded-lg hover:bg-orange-secondary transition-colors">
+                Siguiente Actividad
+                <svg class="w-5 h-5 ml-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                        clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-dark-surface border-t-2 border-orange-primary mt-12">
-        <div class="container mx-auto px-6 py-8">
-            <div class="text-center">
-                <p class="text-gray-text">&copy; 2025 Actividad PHP. Todos los derechos reservados.
-                </p>
-                <p class="text-sm text-gray-500 mt-2">Desarrollado con PHP y Tailwind CSS</p>
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+<?php include '../components/footer.php'; ?>
