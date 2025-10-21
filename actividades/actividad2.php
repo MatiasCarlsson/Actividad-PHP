@@ -7,19 +7,19 @@
     <title>Actividad 2 - Estructuras de Control</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'dark-bg': '#1a1a1a',
-                        'dark-surface': '#2a2a2a',
-                        'orange-primary': '#ff6b35',
-                        'orange-secondary': '#ff8c42',
-                        'gray-text': '#a0a0a0'
-                    }
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'dark-bg': '#1a1a1a',
+                    'dark-surface': '#2a2a2a',
+                    'orange-primary': '#ff6b35',
+                    'orange-secondary': '#ff8c42',
+                    'gray-text': '#a0a0a0'
                 }
             }
         }
+    }
     </script>
 </head>
 
@@ -112,22 +112,18 @@
 
                     <div class="bg-dark-bg p-4 rounded-lg mb-4">
                         <pre class="text-sm">
-
-
-                        <span class="text-purple-400">&lt;?php</span>
-
-                        <span class="text-gray-500">// Bucle for</span>
-
-                        <span class="text-blue-400">for</span> (<span class="text-red-400">$i</span> = <span class="text-yellow-400">1</span>; <span class="text-red-400">$i</span> <= <span class="text-yellow-400">5</span>; <span class="text-red-400">$i</span>++) {
-                            <span class="text-blue-400">echo</span> <span class="text-green-400">"Número: $i"</span>;
-                        }
-                        <span class="text-gray-500">// Bucle while</span>
-                        <span class="text-red-400">$contador</span> = <span class="text-yellow-400">1</span>;
-                        <span class="text-blue-400">while</span> (<span class="text-red-400">$contador</span> <= <span class="text-yellow-400">3</span>) {
-                            <span class="text-blue-400">echo</span> <span class="text-green-400">"Vuelta: $contador"</span>;
-                            <span class="text-red-400">$contador</span>++;
-                        }
-                        <span class="text-purple-400">?></span>
+<span class="text-purple-400">&lt;?php</span>
+<span class="text-gray-500">// Bucle for</span>
+<span class="text-blue-400">for</span> (<span class="text-red-400">$i</span> = <span class="text-yellow-400">1</span>; <span class="text-red-400">$i</span> <= <span class="text-yellow-400">5</span>; <span class="text-red-400">$i</span>++) {
+<span class="text-blue-400">echo</span> <span class="text-green-400">"Número: $i"</span>;
+}
+<span class="text-gray-500">// Bucle while</span>
+<span class="text-red-400">$contador</span> = <span class="text-yellow-400">1</span>;
+<span class="text-blue-400">while</span> (<span class="text-red-400">$contador</span> <= <span class="text-yellow-400">3</span>) {
+<span class="text-blue-400">echo</span> <span class="text-green-400">"Vuelta: $contador"</span>;
+<span class="text-red-400">$contador</span>++;
+}
+<span class="text-purple-400">?></span>
                         </pre>
                     </div>
                 </div>
@@ -142,7 +138,7 @@
                 <?php
                 // Sistema de calificaciones
                 $calificaciones = [85, 92, 78, 96, 73];
-                $nombres = ["Ana", "Carlos", "María", "José", "Laura"];
+                $nombres = ['Ana', 'Carlos', 'María', 'José', 'Laura'];
 
                 echo "<h3 class='text-white text-lg mb-4'>Sistema de Calificaciones:</h3>";
                 echo "<div class='space-y-3'>";
@@ -153,32 +149,34 @@
 
                     // Determinar la categoría
                     if ($nota >= 90) {
-                        $categoria = "Excelente";
-                        $color = "text-green-400";
+                        $categoria = 'Excelente';
+                        $color = 'text-green-400';
                     } elseif ($nota >= 80) {
-                        $categoria = "Muy Bueno";
-                        $color = "text-blue-400";
+                        $categoria = 'Muy Bueno';
+                        $color = 'text-blue-400';
                     } elseif ($nota >= 70) {
-                        $categoria = "Bueno";
-                        $color = "text-yellow-400";
+                        $categoria = 'Bueno';
+                        $color = 'text-yellow-400';
                     } else {
-                        $categoria = "Necesita Mejorar";
-                        $color = "text-red-400";
+                        $categoria = 'Necesita Mejorar';
+                        $color = 'text-red-400';
                     }
 
                     echo "<div class='bg-dark-surface p-3 rounded border-l-4 border-orange-primary'>";
                     echo "<span class='text-gray-text'>$nombre:</span> ";
                     echo "<span class='text-white font-semibold'>$nota puntos</span> - ";
                     echo "<span class='$color font-medium'>$categoria</span>";
-                    echo "</div>";
+                    echo '</div>';
                 }
 
                 // Calcular promedio
                 $promedio = array_sum($calificaciones) / count($calificaciones);
-                echo "</div>";
+                echo '</div>';
                 echo "<div class='mt-4 pt-4 border-t border-gray-600'>";
-                echo "<p class='text-gray-text'><span class='text-orange-secondary'>Promedio del grupo:</span> " . number_format($promedio, 1) . " puntos</p>";
-                echo "</div>";
+                echo "<p class='text-gray-text'><span class='text-orange-secondary'>Promedio del grupo:</span> " .
+                    number_format($promedio, 1) .
+                    ' puntos</p>';
+                echo '</div>';
                 ?>
             </div>
         </div>

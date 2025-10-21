@@ -7,19 +7,19 @@
     <title>Actividad 3 - Funciones en PHP</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'dark-bg': '#1a1a1a',
-                        'dark-surface': '#2a2a2a',
-                        'orange-primary': '#ff6b35',
-                        'orange-secondary': '#ff8c42',
-                        'gray-text': '#a0a0a0'
-                    }
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'dark-bg': '#1a1a1a',
+                    'dark-surface': '#2a2a2a',
+                    'orange-primary': '#ff6b35',
+                    'orange-secondary': '#ff8c42',
+                    'gray-text': '#a0a0a0'
                 }
             }
         }
+    }
     </script>
 </head>
 
@@ -149,8 +149,8 @@
             <div class="bg-dark-bg p-6 rounded-lg mb-6">
                 <?php
                 // Funciones para un sistema de biblioteca
-                
-                function calcularMulta($diasRetraso, $multaPorDia = 2.50)
+
+                function calcularMulta($diasRetraso, $multaPorDia = 2.5)
                 {
                     if ($diasRetraso <= 0) {
                         return 0;
@@ -169,7 +169,7 @@
                         'ficcion' => 'FIC',
                         'ciencia' => 'CIE',
                         'historia' => 'HIS',
-                        'arte' => 'ART'
+                        'arte' => 'ART',
                     ];
 
                     $prefijo = $codigoGenero[$genero] ?? 'GEN';
@@ -189,9 +189,24 @@
 
                 // Datos de ejemplo
                 $libros = [
-                    ['titulo' => 'cien años de soledad', 'genero' => 'ficcion', 'numero' => 123, 'dias' => 5],
-                    ['titulo' => 'breve historia del tiempo', 'genero' => 'ciencia', 'numero' => 456, 'dias' => 10],
-                    ['titulo' => 'el arte de la guerra', 'genero' => 'historia', 'numero' => 789, 'dias' => 18]
+                    [
+                        'titulo' => 'cien años de soledad',
+                        'genero' => 'ficcion',
+                        'numero' => 123,
+                        'dias' => 5,
+                    ],
+                    [
+                        'titulo' => 'breve historia del tiempo',
+                        'genero' => 'ciencia',
+                        'numero' => 456,
+                        'dias' => 10,
+                    ],
+                    [
+                        'titulo' => 'el arte de la guerra',
+                        'genero' => 'historia',
+                        'numero' => 789,
+                        'dias' => 18,
+                    ],
                 ];
 
                 echo "<h3 class='text-white text-lg mb-4'>Sistema de Biblioteca:</h3>";
@@ -202,25 +217,27 @@
                     $codigo = generarCodigoLibro($libro['genero'], $libro['numero']);
                     $estadoInfo = evaluarEstadoLibro($libro['dias']);
                     $multa = calcularMulta($libro['dias'] - 7); // 7 días es el límite
-                
+
                     echo "<div class='bg-dark-surface p-4 rounded-lg border-l-4 border-orange-primary'>";
                     echo "<div class='flex justify-between items-start'>";
-                    echo "<div>";
+                    echo '<div>';
                     echo "<h4 class='text-white font-semibold'>$tituloFormateado</h4>";
                     echo "<p class='text-gray-text text-sm'>Código: $codigo</p>";
                     echo "<p class='text-gray-text text-sm'>Días prestado: {$libro['dias']}</p>";
-                    echo "</div>";
+                    echo '</div>';
                     echo "<div class='text-right'>";
                     echo "<span class='{$estadoInfo['color']} font-medium'>{$estadoInfo['estado']}</span>";
                     if ($multa > 0) {
-                        echo "<p class='text-red-400 text-sm'>Multa: $" . number_format($multa, 2) . "</p>";
+                        echo "<p class='text-red-400 text-sm'>Multa: $" .
+                            number_format($multa, 2) .
+                            '</p>';
                     }
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
                 }
 
-                echo "</div>";
+                echo '</div>';
                 ?>
             </div>
         </div>

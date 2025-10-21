@@ -153,9 +153,9 @@
             <h2 class="text-2xl font-semibold text-orange-primary mb-6">💻 Ejemplo Práctico</h2>
 
             <?php
-            $mensaje = "";
-            $tipoMensaje = "";
-            
+            $mensaje = '';
+            $tipoMensaje = '';
+
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $nombre = trim($_POST['nombre'] ?? '');
                 $email = trim($_POST['email'] ?? '');
@@ -163,43 +163,43 @@
                 $ciudad = $_POST['ciudad'] ?? '';
                 $intereses = $_POST['intereses'] ?? [];
                 $comentarios = trim($_POST['comentarios'] ?? '');
-                
+
                 // Validaciones
                 $errores = [];
-                
+
                 if (empty($nombre) || strlen($nombre) < 2) {
-                    $errores[] = "El nombre debe tener al menos 2 caracteres";
+                    $errores[] = 'El nombre debe tener al menos 2 caracteres';
                 }
-                
+
                 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $errores[] = "Email inválido";
+                    $errores[] = 'Email inválido';
                 }
-                
+
                 if (!empty($telefono) && !preg_match('/^\d{10}$/', $telefono)) {
-                    $errores[] = "El teléfono debe tener 10 dígitos";
+                    $errores[] = 'El teléfono debe tener 10 dígitos';
                 }
-                
+
                 if (empty($ciudad)) {
-                    $errores[] = "Selecciona una ciudad";
+                    $errores[] = 'Selecciona una ciudad';
                 }
-                
+
                 if (empty($errores)) {
-                    $mensaje = "✅ Registro exitoso para " . htmlspecialchars($nombre);
-                    $tipoMensaje = "success";
-                    
+                    $mensaje = '✅ Registro exitoso para ' . htmlspecialchars($nombre);
+                    $tipoMensaje = 'success';
+
                     // Aquí normalmente guardarías en base de datos
                     $datosRecibidos = [
                         'nombre' => htmlspecialchars($nombre),
-                        'email' => htmlspecialchars($email), 
+                        'email' => htmlspecialchars($email),
                         'telefono' => htmlspecialchars($telefono),
                         'ciudad' => htmlspecialchars($ciudad),
                         'intereses' => array_map('htmlspecialchars', $intereses),
                         'comentarios' => htmlspecialchars($comentarios),
-                        'fecha' => date('Y-m-d H:i:s')
+                        'fecha' => date('Y-m-d H:i:s'),
                     ];
                 } else {
-                    $mensaje = "❌ Errores encontrados: " . implode(", ", $errores);
-                    $tipoMensaje = "error";
+                    $mensaje = '❌ Errores encontrados: ' . implode(', ', $errores);
+                    $tipoMensaje = 'error';
                 }
             }
             ?>
@@ -211,7 +211,9 @@
 
                     <?php if (!empty($mensaje)): ?>
                     <div
-                        class="p-4 rounded-lg mb-4 <?php echo $tipoMensaje == 'success' ? 'bg-green-900 text-green-200' : 'bg-red-900 text-red-200'; ?>">
+                        class="p-4 rounded-lg mb-4 <?php echo $tipoMensaje == 'success'
+                            ? 'bg-green-900 text-green-200'
+                            : 'bg-red-900 text-red-200'; ?>">
                         <?php echo $mensaje; ?>
                     </div>
                     <?php endif; ?>
@@ -252,16 +254,24 @@
                                 required>
                                 <option value="">Selecciona una ciudad</option>
                                 <option value="madrid"
-                                    <?php echo ($_POST['ciudad'] ?? '') == 'madrid' ? 'selected' : ''; ?>>
+                                    <?php echo ($_POST['ciudad'] ?? '') == 'madrid'
+                                        ? 'selected'
+                                        : ''; ?>>
                                     Madrid</option>
                                 <option value="barcelona"
-                                    <?php echo ($_POST['ciudad'] ?? '') == 'barcelona' ? 'selected' : ''; ?>>
+                                    <?php echo ($_POST['ciudad'] ?? '') == 'barcelona'
+                                        ? 'selected'
+                                        : ''; ?>>
                                     Barcelona</option>
                                 <option value="valencia"
-                                    <?php echo ($_POST['ciudad'] ?? '') == 'valencia' ? 'selected' : ''; ?>>
+                                    <?php echo ($_POST['ciudad'] ?? '') == 'valencia'
+                                        ? 'selected'
+                                        : ''; ?>>
                                     Valencia</option>
                                 <option value="sevilla"
-                                    <?php echo ($_POST['ciudad'] ?? '') == 'sevilla' ? 'selected' : ''; ?>>
+                                    <?php echo ($_POST['ciudad'] ?? '') == 'sevilla'
+                                        ? 'selected'
+                                        : ''; ?>>
                                     Sevilla</option>
                             </select>
                         </div>
@@ -271,14 +281,22 @@
                                 (múltiple)</label>
                             <div class="space-y-2">
                                 <?php
-                                $opcionesIntereses = ['tecnologia' => 'Tecnología', 'deportes' => 'Deportes', 'arte' => 'Arte', 'musica' => 'Música', 'viajes' => 'Viajes'];
+                                $opcionesIntereses = [
+                                    'tecnologia' => 'Tecnología',
+                                    'deportes' => 'Deportes',
+                                    'arte' => 'Arte',
+                                    'musica' => 'Música',
+                                    'viajes' => 'Viajes',
+                                ];
                                 $interesesSeleccionados = $_POST['intereses'] ?? [];
                                 ?>
                                 <?php foreach ($opcionesIntereses as $valor => $etiqueta): ?>
                                 <label class="flex items-center">
                                     <input type="checkbox" name="intereses[]"
                                         value="<?php echo $valor; ?>"
-                                        <?php echo in_array($valor, $interesesSeleccionados) ? 'checked' : ''; ?>
+                                        <?php echo in_array($valor, $interesesSeleccionados)
+                                            ? 'checked'
+                                            : ''; ?>
                                         class="mr-2 text-orange-primary focus:ring-orange-primary">
                                     <span class="text-gray-text"><?php echo $etiqueta; ?></span>
                                 </label>
@@ -291,7 +309,9 @@
                                 adicionales</label>
                             <textarea name="comentarios" rows="4"
                                 class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:border-orange-primary focus:outline-none"
-                                placeholder="Cuéntanos más sobre ti..."><?php echo htmlspecialchars($_POST['comentarios'] ?? ''); ?></textarea>
+                                placeholder="Cuéntanos más sobre ti..."><?php echo htmlspecialchars(
+                                    $_POST['comentarios'] ?? '',
+                                ); ?></textarea>
                         </div>
 
                         <button type="submit"
@@ -313,30 +333,41 @@
                             <div>
                                 <span class="text-gray-text">Nombre:</span>
                                 <span
-                                    class="text-white ml-2"><?php echo $datosRecibidos['nombre']; ?></span>
+                                    class="text-white ml-2"><?php echo $datosRecibidos[
+                                        'nombre'
+                                    ]; ?></span>
                             </div>
                             <div>
                                 <span class="text-gray-text">Email:</span>
                                 <span
-                                    class="text-white ml-2"><?php echo $datosRecibidos['email']; ?></span>
+                                    class="text-white ml-2"><?php echo $datosRecibidos[
+                                        'email'
+                                    ]; ?></span>
                             </div>
                             <?php if (!empty($datosRecibidos['telefono'])): ?>
                             <div>
                                 <span class="text-gray-text">Teléfono:</span>
                                 <span
-                                    class="text-white ml-2"><?php echo $datosRecibidos['telefono']; ?></span>
+                                    class="text-white ml-2"><?php echo $datosRecibidos[
+                                        'telefono'
+                                    ]; ?></span>
                             </div>
                             <?php endif; ?>
                             <div>
                                 <span class="text-gray-text">Ciudad:</span>
                                 <span
-                                    class="text-white ml-2"><?php echo ucfirst($datosRecibidos['ciudad']); ?></span>
+                                    class="text-white ml-2"><?php echo ucfirst(
+                                        $datosRecibidos['ciudad'],
+                                    ); ?></span>
                             </div>
                             <?php if (!empty($datosRecibidos['intereses'])): ?>
                             <div>
                                 <span class="text-gray-text">Intereses:</span>
                                 <span
-                                    class="text-white ml-2"><?php echo implode(', ', $datosRecibidos['intereses']); ?></span>
+                                    class="text-white ml-2"><?php echo implode(
+                                        ', ',
+                                        $datosRecibidos['intereses'],
+                                    ); ?></span>
                             </div>
                             <?php endif; ?>
                             <?php if (!empty($datosRecibidos['comentarios'])): ?>
@@ -349,7 +380,9 @@
                             <div>
                                 <span class="text-gray-text">Fecha de registro:</span>
                                 <span
-                                    class="text-white ml-2"><?php echo $datosRecibidos['fecha']; ?></span>
+                                    class="text-white ml-2"><?php echo $datosRecibidos[
+                                        'fecha'
+                                    ]; ?></span>
                             </div>
                         </div>
                     </div>

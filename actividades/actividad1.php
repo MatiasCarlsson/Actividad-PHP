@@ -117,24 +117,30 @@
                 <div class="bg-dark-bg p-6 rounded-lg mb-6">
                     <?php
                     // Variables de ejemplo
-                    $nombre = "María García";
+                    $nombre = 'María García';
                     $edad = 28;
-                    $salario = 45000.50;
+                    $salario = 45000.5;
                     $esActivo = true;
 
                     echo "<h3 class='text-white text-lg mb-4'>Información del Empleado:</h3>";
                     echo "<div class='space-y-2'>";
                     echo "<p class='text-gray-text'><span class='text-orange-secondary'>Nombre:</span> $nombre</p>";
                     echo "<p class='text-gray-text'><span class='text-orange-secondary'>Edad:</span> $edad años</p>";
-                    echo "<p class='text-gray-text'><span class='text-orange-secondary'>Salario:</span> $" . number_format($salario, 2) . "</p>";
-                    echo "<p class='text-gray-text'><span class='text-orange-secondary'>Estado:</span> " . ($esActivo ? "Activo" : "Inactivo") . "</p>";
-                    echo "</div>";
+                    echo "<p class='text-gray-text'><span class='text-orange-secondary'>Salario:</span> $" .
+                        number_format($salario, 2) .
+                        '</p>';
+                    echo "<p class='text-gray-text'><span class='text-orange-secondary'>Estado:</span> " .
+                        ($esActivo ? 'Activo' : 'Inactivo') .
+                        '</p>';
+                    echo '</div>';
 
                     // Operaciones básicas
                     $salarioMensual = $salario / 12;
                     echo "<div class='mt-4 pt-4 border-t border-gray-600'>";
-                    echo "<p class='text-gray-text'><span class='text-orange-secondary'>Salario Mensual:</span> $" . number_format($salarioMensual, 2) . "</p>";
-                    echo "</div>";
+                    echo "<p class='text-gray-text'><span class='text-orange-secondary'>Salario Mensual:</span> $" .
+                        number_format($salarioMensual, 2) .
+                        '</p>';
+                    echo '</div>';
                     ?>
                 </div>
 

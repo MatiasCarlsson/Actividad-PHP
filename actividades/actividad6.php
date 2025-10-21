@@ -160,55 +160,55 @@
             
             <?php
             session_start();
-            
+
             // Manejar cookies de preferencias
             if (isset($_POST['guardar_preferencias'])) {
                 $tema = $_POST['tema'] ?? 'claro';
                 $idioma = $_POST['idioma'] ?? 'es';
-                
-                setcookie('tema_preferido', $tema, time() + (30 * 24 * 60 * 60));
-                setcookie('idioma_preferido', $idioma, time() + (30 * 24 * 60 * 60));
-                
-                $_SESSION['mensaje'] = "Preferencias guardadas correctamente";
+
+                setcookie('tema_preferido', $tema, time() + 30 * 24 * 60 * 60);
+                setcookie('idioma_preferido', $idioma, time() + 30 * 24 * 60 * 60);
+
+                $_SESSION['mensaje'] = 'Preferencias guardadas correctamente';
             }
-            
+
             // Manejar login simulado
             if (isset($_POST['login'])) {
                 $usuario = $_POST['usuario'] ?? '';
                 $password = $_POST['password'] ?? '';
-                
+
                 // Simulación de usuarios válidos
                 $usuariosValidos = [
                     'admin' => 'admin123',
                     'usuario1' => 'password1',
-                    'juan' => 'juan123'
+                    'juan' => 'juan123',
                 ];
-                
+
                 if (isset($usuariosValidos[$usuario]) && $usuariosValidos[$usuario] === $password) {
                     $_SESSION['usuario_logueado'] = $usuario;
                     $_SESSION['rol'] = $usuario === 'admin' ? 'administrador' : 'usuario';
                     $_SESSION['login_time'] = time();
                     $_SESSION['visitas'] = ($_SESSION['visitas'] ?? 0) + 1;
-                    
+
                     // Cookie para recordar usuario
                     if (isset($_POST['recordar'])) {
-                        setcookie('usuario_recordado', $usuario, time() + (7 * 24 * 60 * 60));
+                        setcookie('usuario_recordado', $usuario, time() + 7 * 24 * 60 * 60);
                     }
-                    
+
                     $_SESSION['mensaje'] = "¡Bienvenido, $usuario!";
                 } else {
-                    $_SESSION['error'] = "Credenciales incorrectas";
+                    $_SESSION['error'] = 'Credenciales incorrectas';
                 }
             }
-            
+
             // Manejar logout
             if (isset($_POST['logout'])) {
                 session_destroy();
                 setcookie('usuario_recordado', '', time() - 3600);
                 session_start();
-                $_SESSION['mensaje'] = "Sesión cerrada correctamente";
+                $_SESSION['mensaje'] = 'Sesión cerrada correctamente';
             }
-            
+
             // Obtener preferencias de cookies
             $temaActual = $_COOKIE['tema_preferido'] ?? 'oscuro';
             $idiomaActual = $_COOKIE['idioma_preferido'] ?? 'es';
@@ -222,13 +222,19 @@
                     
                     <?php if (isset($_SESSION['mensaje'])): ?>
                     <div class="p-4 bg-green-900 text-green-200 rounded-lg mb-4">
-                        <?php echo $_SESSION['mensaje']; unset($_SESSION['mensaje']); ?>
+                        <?php
+                        echo $_SESSION['mensaje'];
+                        unset($_SESSION['mensaje']);
+                        ?>
                     </div>
                     <?php endif; ?>
                     
                     <?php if (isset($_SESSION['error'])): ?>
                     <div class="p-4 bg-red-900 text-red-200 rounded-lg mb-4">
-                        <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+                        <?php
+                        echo $_SESSION['error'];
+                        unset($_SESSION['error']);
+                        ?>
                     </div>
                     <?php endif; ?>
                     
@@ -243,19 +249,28 @@
                         <div class="space-y-3 text-sm">
                             <div>
                                 <span class="text-gray-text">Usuario:</span>
-                                <span class="text-white ml-2 font-medium"><?php echo $_SESSION['usuario_logueado']; ?></span>
+                                <span class="text-white ml-2 font-medium"><?php echo $_SESSION[
+                                    'usuario_logueado'
+                                ]; ?></span>
                             </div>
                             <div>
                                 <span class="text-gray-text">Rol:</span>
-                                <span class="text-orange-secondary ml-2 font-medium"><?php echo ucfirst($_SESSION['rol']); ?></span>
+                                <span class="text-orange-secondary ml-2 font-medium"><?php echo ucfirst(
+                                    $_SESSION['rol'],
+                                ); ?></span>
                             </div>
                             <div>
                                 <span class="text-gray-text">Conectado desde:</span>
-                                <span class="text-white ml-2"><?php echo date('H:i:s', $_SESSION['login_time']); ?></span>
+                                <span class="text-white ml-2"><?php echo date(
+                                    'H:i:s',
+                                    $_SESSION['login_time'],
+                                ); ?></span>
                             </div>
                             <div>
                                 <span class="text-gray-text">Visitas en esta sesión:</span>
-                                <span class="text-blue-400 ml-2 font-bold"><?php echo $_SESSION['visitas']; ?></span>
+                                <span class="text-blue-400 ml-2 font-bold"><?php echo $_SESSION[
+                                    'visitas'
+                                ]; ?></span>
                             </div>
                             <div>
                                 <span class="text-gray-text">ID de sesión:</span>
@@ -274,7 +289,9 @@
                     <form method="POST" class="space-y-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-text mb-2">Usuario</label>
-                            <input type="text" name="usuario" value="<?php echo htmlspecialchars($usuarioRecordado); ?>"
+                            <input type="text" name="usuario" value="<?php echo htmlspecialchars(
+                                $usuarioRecordado,
+                            ); ?>"
                                    class="w-full px-4 py-3 bg-dark-bg border border-gray-700 rounded-lg text-white focus:border-orange-primary focus:outline-none"
                                    placeholder="Prueba: admin, usuario1, juan">
                         </div>
@@ -315,8 +332,12 @@
                         <div class="mb-4 p-3 bg-gray-800 rounded">
                             <p class="text-sm text-gray-text mb-2">Configuración actual:</p>
                             <div class="space-y-1 text-sm">
-                                <div><span class="text-orange-secondary">Tema:</span> <span class="text-white"><?php echo ucfirst($temaActual); ?></span></div>
-                                <div><span class="text-orange-secondary">Idioma:</span> <span class="text-white"><?php echo strtoupper($idiomaActual); ?></span></div>
+                                <div><span class="text-orange-secondary">Tema:</span> <span class="text-white"><?php echo ucfirst(
+                                    $temaActual,
+                                ); ?></span></div>
+                                <div><span class="text-orange-secondary">Idioma:</span> <span class="text-white"><?php echo strtoupper(
+                                    $idiomaActual,
+                                ); ?></span></div>
                                 <?php if ($usuarioRecordado): ?>
                                 <div><span class="text-orange-secondary">Usuario recordado:</span> <span class="text-white"><?php echo $usuarioRecordado; ?></span></div>
                                 <?php endif; ?>
@@ -327,18 +348,31 @@
                             <div>
                                 <label class="block text-sm font-medium text-gray-text mb-2">Tema preferido</label>
                                 <select name="tema" class="w-full px-4 py-3 bg-dark-surface border border-gray-700 rounded-lg text-white focus:border-orange-primary focus:outline-none">
-                                    <option value="oscuro" <?php echo $temaActual == 'oscuro' ? 'selected' : ''; ?>>Tema Oscuro</option>
-                                    <option value="claro" <?php echo $temaActual == 'claro' ? 'selected' : ''; ?>>Tema Claro</option>
-                                    <option value="automatico" <?php echo $temaActual == 'automatico' ? 'selected' : ''; ?>>Automático</option>
+                                    <option value="oscuro" <?php echo $temaActual == 'oscuro'
+                                        ? 'selected'
+                                        : ''; ?>>Tema Oscuro</option>
+                                    <option value="claro" <?php echo $temaActual == 'claro'
+                                        ? 'selected'
+                                        : ''; ?>>Tema Claro</option>
+                                    <option value="automatico" <?php echo $temaActual ==
+                                    'automatico'
+                                        ? 'selected'
+                                        : ''; ?>>Automático</option>
                                 </select>
                             </div>
                             
                             <div>
                                 <label class="block text-sm font-medium text-gray-text mb-2">Idioma</label>
                                 <select name="idioma" class="w-full px-4 py-3 bg-dark-surface border border-gray-700 rounded-lg text-white focus:border-orange-primary focus:outline-none">
-                                    <option value="es" <?php echo $idiomaActual == 'es' ? 'selected' : ''; ?>>Español</option>
-                                    <option value="en" <?php echo $idiomaActual == 'en' ? 'selected' : ''; ?>>English</option>
-                                    <option value="fr" <?php echo $idiomaActual == 'fr' ? 'selected' : ''; ?>>Français</option>
+                                    <option value="es" <?php echo $idiomaActual == 'es'
+                                        ? 'selected'
+                                        : ''; ?>>Español</option>
+                                    <option value="en" <?php echo $idiomaActual == 'en'
+                                        ? 'selected'
+                                        : ''; ?>>English</option>
+                                    <option value="fr" <?php echo $idiomaActual == 'fr'
+                                        ? 'selected'
+                                        : ''; ?>>Français</option>
                                 </select>
                             </div>
                             

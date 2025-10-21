@@ -7,19 +7,19 @@
     <title>Actividad 4 - Arrays y Manipulación</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'dark-bg': '#1a1a1a',
-                        'dark-surface': '#2a2a2a',
-                        'orange-primary': '#ff6b35',
-                        'orange-secondary': '#ff8c42',
-                        'gray-text': '#a0a0a0'
-                    }
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'dark-bg': '#1a1a1a',
+                    'dark-surface': '#2a2a2a',
+                    'orange-primary': '#ff6b35',
+                    'orange-secondary': '#ff8c42',
+                    'gray-text': '#a0a0a0'
                 }
             }
         }
+    }
     </script>
 </head>
 
@@ -87,10 +87,8 @@
 <span class="text-purple-400">&lt;?php</span>
 <span class="text-gray-500">// Crear array</span>
 <span class="text-red-400">$frutas</span> = [<span class="text-green-400">"manzana"</span>, <span class="text-green-400">"naranja"</span>, <span class="text-green-400">"plátano"</span>];
-
 <span class="text-gray-500">// Acceder a elementos</span>
 <span class="text-blue-400">echo</span> <span class="text-red-400">$frutas</span>[<span class="text-yellow-400">0</span>]; <span class="text-gray-500">// "manzana"</span>
-
 <span class="text-gray-500">// Agregar elemento</span>
 <span class="text-red-400">$frutas</span>[] = <span class="text-green-400">"uva"</span>;
 <span class="text-purple-400">?></span>
@@ -161,43 +159,43 @@
             <div class="bg-dark-bg p-6 rounded-lg mb-6">
                 <?php
                 // Sistema de inventario de una tienda
-                
+
                 $productos = [
                     [
                         'nombre' => 'Laptop Gaming',
                         'precio' => 1299.99,
                         'categoria' => 'Tecnología',
                         'stock' => 15,
-                        'ventas' => 23
+                        'ventas' => 23,
                     ],
                     [
                         'nombre' => 'Smartphone',
                         'precio' => 699.99,
                         'categoria' => 'Tecnología',
                         'stock' => 8,
-                        'ventas' => 45
+                        'ventas' => 45,
                     ],
                     [
                         'nombre' => 'Auriculares Bluetooth',
                         'precio' => 159.99,
                         'categoria' => 'Tecnología',
                         'stock' => 32,
-                        'ventas' => 67
+                        'ventas' => 67,
                     ],
                     [
                         'nombre' => 'Silla Ergonómica',
                         'precio' => 299.99,
                         'categoria' => 'Mobiliario',
                         'stock' => 12,
-                        'ventas' => 18
+                        'ventas' => 18,
                     ],
                     [
                         'nombre' => 'Monitor 4K',
                         'precio' => 449.99,
                         'categoria' => 'Tecnología',
                         'stock' => 5,
-                        'ventas' => 31
-                    ]
+                        'ventas' => 31,
+                    ],
                 ];
 
                 // Calcular estadísticas
@@ -230,21 +228,23 @@
                     if ($producto['ventas'] == $maxVentas) {
                         echo "<span class='px-2 py-1 bg-yellow-500 text-black text-xs rounded font-bold'>🏆 MÁS VENDIDO</span>";
                     }
-                    echo "</div>";
+                    echo '</div>';
 
                     echo "<div class='grid grid-cols-2 gap-4 text-sm'>";
-                    echo "<div>";
-                    echo "<p class='text-gray-text'>Precio: <span class='text-orange-secondary'>$" . number_format($producto['precio'], 2) . "</span></p>";
+                    echo '<div>';
+                    echo "<p class='text-gray-text'>Precio: <span class='text-orange-secondary'>$" .
+                        number_format($producto['precio'], 2) .
+                        '</span></p>';
                     echo "<p class='text-gray-text'>Categoría: <span class='text-white'>{$producto['categoria']}</span></p>";
-                    echo "</div>";
-                    echo "<div>";
+                    echo '</div>';
+                    echo '<div>';
                     echo "<p class='text-gray-text'>Stock: <span class='$colorStock'>{$producto['stock']} ($estadoStock)</span></p>";
                     echo "<p class='text-gray-text'>Ventas: <span class='text-blue-400'>{$producto['ventas']} unidades</span></p>";
-                    echo "</div>";
-                    echo "</div>";
-                    echo "</div>";
+                    echo '</div>';
+                    echo '</div>';
+                    echo '</div>';
                 }
-                echo "</div>";
+                echo '</div>';
 
                 // Estadísticas generales
                 echo "<div class='bg-dark-surface p-4 rounded-lg border border-gray-600'>";
@@ -253,21 +253,23 @@
                 echo "<div class='text-center'>";
                 echo "<p class='text-2xl font-bold text-orange-secondary'>$totalProductos</p>";
                 echo "<p class='text-gray-text'>Productos Total</p>";
-                echo "</div>";
+                echo '</div>';
                 echo "<div class='text-center'>";
-                echo "<p class='text-2xl font-bold text-green-400'>$" . number_format($precioPromedio, 0) . "</p>";
+                echo "<p class='text-2xl font-bold text-green-400'>$" .
+                    number_format($precioPromedio, 0) .
+                    '</p>';
                 echo "<p class='text-gray-text'>Precio Promedio</p>";
-                echo "</div>";
+                echo '</div>';
                 echo "<div class='text-center'>";
                 echo "<p class='text-2xl font-bold text-blue-400'>$ventasTotales</p>";
                 echo "<p class='text-gray-text'>Ventas Totales</p>";
-                echo "</div>";
+                echo '</div>';
                 echo "<div class='text-center'>";
                 echo "<p class='text-2xl font-bold text-purple-400'>$stockTotal</p>";
                 echo "<p class='text-gray-text'>Stock Total</p>";
-                echo "</div>";
-                echo "</div>";
-                echo "</div>";
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
                 ?>
             </div>
         </div>
